@@ -5,7 +5,7 @@
 #include <WiFi.h>
 #include <esp_now.h>
 
-// #include "config.h"
+#include "config.h"
 // #include "layer_control.h"
 
 
@@ -25,7 +25,7 @@ class CatNow {
 
         // wife credentials
         #define CHANNEL 1
-        String wifi_name = "LYNX-"; // + cat_variant;
+        String wifi_name = "LYNX_hub_"; // + cat_variant;
 
         // slave mac address
         esp_now_peer_info_t peerInfo;

@@ -10,7 +10,7 @@ void CatNow::initialize() {
     WiFi.mode(WIFI_AP_STA);
 
     // set up an Access Point 
-    WiFi.softAP(wifi_name + config.variant, "Slave_1_Password", CHANNEL, 0);
+    WiFi.softAP(wifi_name + config.VERSION, "Slave_1_Password", CHANNEL, 0);
 
     // Initialize ESP-NOW
     esp_now_init();
@@ -96,7 +96,7 @@ void CatNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int da
             Serial.print("Received data: ");
             Serial.println(dynamicValue);
 
-            layer_control.received_layer_switch(dynamicValue);
+            // layer_control.received_layer_switch(dynamicValue);
         }
     }
 }
