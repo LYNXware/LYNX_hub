@@ -21,7 +21,8 @@ class CatNow {
         void scan_for_cats();
 
         byte available_cats_count = 0;
-        String available_cats[4];
+        String available_cats[MAX_DEVICES];
+        String cats_set = "LYNXhub";
 
         // const int StringLength = 10;
         // String* available_cats  = new String[StringLength];

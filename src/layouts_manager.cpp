@@ -1,6 +1,34 @@
 #include "layouts_manager.h"
 
 
+
+
+
+void Layouts_Manager::split_into_devices(){
+    
+    device_index = 0;
+    start = 0;
+
+    for (int i = 0; i < incoming_layouts.length(); i++) {
+        if (incoming_layouts.charAt(i) == delimiter_device){
+            device_layouts[device_index] = incoming_layouts.substring(start,i);
+            start = i+1;
+            device_index++;
+            
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 void Layouts_Manager::get_layouts(String variant) {
 
     if (Serial.available() > 0){

@@ -5,6 +5,7 @@
 
 #include "config.h"
 
+
 #include <Preferences.h>
 extern Preferences preferences;
 
@@ -13,6 +14,13 @@ extern Preferences preferences;
 class Layouts_Manager {
 
     public:
+
+        String incoming_layouts = "empty";
+
+        void split_into_devices();
+
+
+
 
         // events_array[layer][event];
         String events_array[4][46];
@@ -26,7 +34,19 @@ class Layouts_Manager {
         // this function is loading the layouts from the preferences (espressif library)
         void load_layouts();
         
+
+
+
     private:
+
+        const char delimiter_device = 0x01;
+
+        String device_layouts[MAX_DEVICES];
+
+        byte device_index = 0;
+        int start = 0;
+
+
 
         // String variant = config.variant;
 

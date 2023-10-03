@@ -4,7 +4,7 @@
 #include <Arduino.h>
 
 
-
+const byte MAX_DEVICES = 4;
 
 
 

@@ -38,13 +38,18 @@ void CatNow::scan_for_cats(){
         Serial.print(scanResults);
         Serial.println(" device(s)");
 
+        cats_set = "LYNXhub";
+
         for (int i = 0; i < scanResults; ++i) {
 
             String SSID = WiFi.SSID(i);
             
             if (SSID.indexOf(wifi_cat) == 0) {
+
                 available_cats[available_cats_count] = SSID;
                 available_cats_count++;
+
+                cats_set = cats_set + ";" + SSID;
             }
 
         }

@@ -1,6 +1,8 @@
 #include <Arduino.h>
 
 #include "wireless_comms.h"
+#include "usb_comms.h"
+#include "layouts_manager.h"
 
 
 //test button
@@ -22,10 +24,14 @@ void setup() {
 
 void loop() {
 
+  usb_comms.get_layouts();
+
 
   bRead = digitalRead(pI);
   if (bRead == 0) {
   
+  Serial.println(layouts_manager.incoming_layouts);
+  Serial.println(catnow.cats_set);
   Serial.println("Hello World");
   // delay(1000);
 
