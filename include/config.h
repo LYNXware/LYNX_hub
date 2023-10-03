@@ -24,7 +24,7 @@ class Config {
 
     public:
 
-        String VERSION = "v0.3.0";
+        String VERSION = "v0.4.0";
 
         //the variant variable is used to communicate with the LYNXapp
         String variant = "C0-000-000-000-v0.2.0";

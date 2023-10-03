@@ -26,7 +26,7 @@ void loop() {
   bRead = digitalRead(pI);
   if (bRead == 0) {
   
-  // Serial.println("Hello World");
+  Serial.println("Hello World");
   // delay(1000);
 
     // catnow.test();

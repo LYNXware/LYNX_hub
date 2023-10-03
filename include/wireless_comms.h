@@ -28,6 +28,10 @@ class CatNow {
         // String* cats_variants;
 
         
+        void event_triger(String event);
+
+
+
 
 
 
@@ -43,7 +47,8 @@ class CatNow {
 
         // wife credentials
         #define CHANNEL 1
-        String wifi_name = "LYNX"; 
+        String wifi_hub = "LYNXhub_"; 
+        String wifi_cat = "LYNX_";
 
         // slave mac address
         esp_now_peer_info_t peerInfo;

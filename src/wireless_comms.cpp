@@ -10,7 +10,7 @@ void CatNow::initialize() {
     WiFi.mode(WIFI_AP_STA);
 
     // set up an Access Point 
-    WiFi.softAP(wifi_name + config.VERSION, "Slave_1_Password", CHANNEL, 0);
+    WiFi.softAP(wifi_hub + config.VERSION, "Slave_1_Password", CHANNEL, 0);
 
     // Initialize ESP-NOW
     esp_now_init();
@@ -42,7 +42,7 @@ void CatNow::scan_for_cats(){
 
             String SSID = WiFi.SSID(i);
             
-            if (SSID.indexOf(wifi_name) == 0) {
+            if (SSID.indexOf(wifi_cat) == 0) {
                 available_cats[available_cats_count] = SSID;
                 available_cats_count++;
             }
@@ -53,6 +53,38 @@ void CatNow::scan_for_cats(){
     WiFi.scanDelete();
 }
 
+
+
+
+void CatNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int data_len) {
+
+    // Serial.println("OnDataReceived");
+
+    if (data_len == 4) {
+        if (data[0] == 'c' && data[1] == 'a' && data[2] == 't') {
+            uint8_t dynamicValue = data[3];
+
+            Serial.print("Received data: ");
+            Serial.println(dynamicValue);
+
+            Serial.print(mac_addr[0], HEX);
+            Serial.print("-");
+            Serial.print(mac_addr[1], HEX);
+            Serial.print("-");
+            Serial.print(mac_addr[2], HEX);
+            Serial.print("-");
+            Serial.print(mac_addr[3], HEX);
+            Serial.print("-");
+            Serial.print(mac_addr[4], HEX);
+            Serial.print("-");
+            Serial.println(mac_addr[5], HEX);
+
+
+
+            // layer_control.received_layer_switch(dynamicValue);
+        }
+    }
+}
 
 
 
@@ -92,7 +124,7 @@ void CatNow::scan_for_slave(){
             delay(10);
 
             // Check if the current device starts with `Slave`
-            if (SSID.indexOf(wifi_name) == 0) {
+            if (SSID.indexOf(wifi_cat) == 0) {
                 // SSID of interest
                 Serial.println("Found a Slave.");
                 // Get BSSID => Mac Address of the Slave
@@ -127,21 +159,6 @@ void CatNow::OnDataSent(const uint8_t* mac_addr, esp_now_send_status_t status) {
 
 
 
-void CatNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int data_len) {
-
-    Serial.println("OnDataReceived");
-
-    if (data_len == 4) {
-        if (data[0] == 'c' && data[1] == 'a' && data[2] == 't') {
-            uint8_t dynamicValue = data[3];
-
-            Serial.print("Received data: ");
-            Serial.println(dynamicValue);
-
-            // layer_control.received_layer_switch(dynamicValue);
-        }
-    }
-}
 
 
 
