@@ -22,6 +22,48 @@ void CatNow::initialize() {
 
 
 
+
+
+void CatNow::scan_for_cats(){
+      
+    // Scan only on one channel for slaves
+    int8_t scanResults = WiFi.scanNetworks(false, false, false, 300, CHANNEL);
+
+    if (scanResults == 0) {
+        Serial.println("No ESP32 devices nearby found");
+
+    } else {
+
+        Serial.print("Found ");
+        Serial.print(scanResults);
+        Serial.println(" device(s)");
+
+        for (int i = 0; i < scanResults; ++i) {
+
+            String SSID = WiFi.SSID(i);
+            
+            if (SSID.indexOf(wifi_name) == 0) {
+                available_cats[available_cats_count] = SSID;
+                available_cats_count++;
+            }
+
+        }
+    }
+    // clean up ram
+    WiFi.scanDelete();
+}
+
+
+
+
+
+
+
+
+
+
+
+
 void CatNow::scan_for_slave(){
       
     // Scan only on one channel for slaves

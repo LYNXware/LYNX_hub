@@ -17,15 +17,33 @@ class CatNow {
         // turn on wifi and CatNow
         void initialize();
 
+        //search for available cats
+        void scan_for_cats();
+
+        byte available_cats_count = 0;
+        String available_cats[4];
+
+        // const int StringLength = 10;
+        // String* available_cats  = new String[StringLength];
+        // String* cats_variants;
+
+        
+
+
+
         void scan_for_slave();
 
         void send_switch_layer(uint8_t layer);
+
+
+
+
 
     private:
 
         // wife credentials
         #define CHANNEL 1
-        String wifi_name = "LYNX_hub_"; // + cat_variant;
+        String wifi_name = "LYNX"; 
 
         // slave mac address
         esp_now_peer_info_t peerInfo;

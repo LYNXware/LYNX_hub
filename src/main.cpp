@@ -16,6 +16,7 @@ void setup() {
   pinMode(pI, INPUT_PULLUP);
 
   catnow.initialize();
+  catnow.scan_for_cats();
 
 }
 
@@ -25,12 +26,14 @@ void loop() {
   bRead = digitalRead(pI);
   if (bRead == 0) {
   
-  Serial.println("Hello World");
-  delay(1000);
+  // Serial.println("Hello World");
+  // delay(1000);
 
     // catnow.test();
-    // catnow.scan_for_slave();
-    // catnow.send_switch_layer(66);
+    // catnow.scan_for_cats();
+    // // catnow.send_switch_layer(66);
+    // Serial.println(catnow.available_cats[0]);
+    // Serial.println(sizeof(catnow.available_cats));
   }
 
   
