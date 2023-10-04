@@ -10,7 +10,7 @@ void Layouts_Manager::split_into_devices(){
     start = 0;
 
     for (int i = 0; i < incoming_layouts.length(); i++) {
-        if (incoming_layouts.charAt(i) == delimiter_device){
+        if (incoming_layouts.charAt(i) == DELIMITER_DEVICE){
             device_layouts[device_index] = incoming_layouts.substring(start,i);
             start = i+1;
             device_index++;

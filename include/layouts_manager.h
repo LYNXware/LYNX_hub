@@ -4,7 +4,7 @@
 #include <Arduino.h>
 
 #include "config.h"
-
+#include "constants.h"
 
 #include <Preferences.h>
 extern Preferences preferences;
@@ -16,6 +16,11 @@ class Layouts_Manager {
     public:
 
         String incoming_layouts = "empty";
+
+
+        String left_cat_layout[4][46];
+        String right_cat_layout[4][46];
+
 
         void split_into_devices();
 
@@ -39,7 +44,7 @@ class Layouts_Manager {
 
     private:
 
-        const char delimiter_device = 0x01;
+        
 
         String device_layouts[MAX_DEVICES];
 
