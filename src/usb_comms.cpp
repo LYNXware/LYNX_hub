@@ -12,7 +12,7 @@ void USB_Comms::get_layouts() {
         }
         else{
 
-            layouts_manager.incoming_layouts = incoming_raw_layouts;
+            layouts_manager.split_layouts_package(incoming_raw_layouts);
 
             // split_raw_layouts();
             // preferences.begin("myPrefs", false);

@@ -33,11 +33,26 @@ void loop() {
 
   bRead = digitalRead(pI);
   if (bRead == 0) {
-  
-  Serial.println(layouts_manager.incoming_layouts);
-  Serial.println(catnow.cats_set);
-  Serial.println("Hello World");
-  // delay(1000);
+
+    // Serial.println(layouts_manager.layouts_package);
+    // Serial.println(layouts_manager.layouts_package[0]);
+    // Serial.println(layouts_manager.layouts_package[1]);
+    // Serial.println(layouts_manager.layouts_package[2]);
+    // Serial.println(layouts_manager.layouts_package[3]);
+
+    // Serial.println(layouts_manager.left_cat_layout[0][0]);
+    // Serial.println(layouts_manager.left_cat_layout[0][1]);
+    // Serial.println(layouts_manager.left_cat_layout[1][0]);
+    // Serial.println(layouts_manager.left_cat_layout[1][1]);
+
+    // Serial.println(layouts_manager.right_cat_layout[0][0]);
+    // Serial.println(layouts_manager.right_cat_layout[0][1]);
+    // Serial.println(layouts_manager.right_cat_layout[1][0]);
+    // Serial.println(layouts_manager.right_cat_layout[1][1]);
+    // 
+    Serial.println(catnow.cats_set);
+    // Serial.println("Hello World");
+    // delay(1000);
 
     // catnow.test();
     // catnow.scan_for_cats();

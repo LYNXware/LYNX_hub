@@ -15,14 +15,16 @@ class Layouts_Manager {
 
     public:
 
-        String incoming_layouts = "empty";
+        // String events_package = "empty";
+        String layouts_package = "empty";
 
 
         String left_cat_layout[4][46];
         String right_cat_layout[4][46];
+        String place_holder[4][46];
 
 
-        void split_into_devices();
+        void split_layouts_package(String events_package);
 
 
 
@@ -43,6 +45,9 @@ class Layouts_Manager {
 
 
     private:
+
+        int front_of_events;
+
 
         
 
