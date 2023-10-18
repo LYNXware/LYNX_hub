@@ -49,7 +49,7 @@ void CatNow::scan_for_cats(){
                 available_cats[available_cats_count] = SSID;
                 available_cats_count++;
 
-                cats_set = cats_set + ";" + SSID;
+                cats_set = cats_set + HUB_DEVICE_DELIMITER + SSID;
             }
 
         }

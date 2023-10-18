@@ -50,6 +50,7 @@ class CatNow {
         #define CHANNEL 1
         String wifi_hub = "LYNXhub_"; 
         String wifi_cat = "LYNX_";
+        String HUB_DEVICE_DELIMITER = ":";
 
         // slave mac address
         esp_now_peer_info_t peerInfo;
