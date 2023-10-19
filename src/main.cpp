@@ -18,7 +18,11 @@ void setup() {
   pinMode(pI, INPUT_PULLUP);
 
   catnow.initialize();
-  catnow.scan_for_cats();
+  // catnow.scan_for_cats();
+
+  Serial.begin(115200);
+  Keyboard.begin();
+  Mouse.begin();
 
 }
 
@@ -33,6 +37,14 @@ void loop() {
 
   bRead = digitalRead(pI);
   if (bRead == 0) {
+
+    catnow.scan_for_cats();
+    Serial.println(catnow.cats_set);
+
+    Serial.println(layouts_manager.layouts_package);
+    Serial.println(layouts_manager.events_bank[0][0][0]);
+    Serial.println(layouts_manager.events_bank[1][0][0]);
+
 
     // Serial.println(layouts_manager.layouts_package);
     // Serial.println(layouts_manager.layouts_package[0]);
@@ -50,7 +62,7 @@ void loop() {
     // Serial.println(layouts_manager.right_cat_layout[1][0]);
     // Serial.println(layouts_manager.right_cat_layout[1][1]);
     // 
-    Serial.println(catnow.cats_set);
+    
     // Serial.println("Hello World");
     // delay(1000);
 

@@ -18,10 +18,12 @@ class Layouts_Manager {
         // String events_package = "empty";
         String layouts_package = "empty";
 
+        String events_bank[2][4][46];
+
 
         String left_cat_layout[4][46];
         String right_cat_layout[4][46];
-        String place_holder[4][46];
+        // String place_holder[4][46];
 
 
         void split_layouts_package(String events_package);
@@ -45,7 +47,9 @@ class Layouts_Manager {
 
 
     private:
-
+        byte device_side; // 0 = left, 1 = right
+        byte layer;
+        byte event_index;
         int front_of_events;
 
 
@@ -68,8 +72,7 @@ class Layouts_Manager {
         int b;
         int f;
 
-        byte layer;
-        byte event_index;
+
 
         const char delimiter = 0xff;
         const char delimiter_layout = 0xfe;

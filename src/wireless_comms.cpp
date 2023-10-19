@@ -53,32 +53,46 @@ void CatNow::scan_for_cats(){
 
 void CatNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int data_len) {
 
-    // Serial.println("OnDataReceived");
+    Serial.println("OnDataReceived");
 
-    if (data_len == 4) {
-        if (data[0] == 'c' && data[1] == 'a' && data[2] == 't') {
-            uint8_t dynamicValue = data[3];
+    Serial.println(data[0]);
+    Serial.println(data[1]);
 
-            Serial.print("Received data: ");
-            Serial.println(dynamicValue);
-
-            Serial.print(mac_addr[0], HEX);
-            Serial.print("-");
-            Serial.print(mac_addr[1], HEX);
-            Serial.print("-");
-            Serial.print(mac_addr[2], HEX);
-            Serial.print("-");
-            Serial.print(mac_addr[3], HEX);
-            Serial.print("-");
-            Serial.print(mac_addr[4], HEX);
-            Serial.print("-");
-            Serial.println(mac_addr[5], HEX);
-
-
-
-            // layer_control.received_layer_switch(dynamicValue);
-        }
+    if (data[0] == 'L')
+    {
+        event.trigger_key(0, data[1]);
     }
+    else if (data[0] == 'R')
+    {
+        event.trigger_key(1, data[1]);
+    }
+    else if (data[0] == 'M')
+    {
+        event.move_mouse(data[1], data[2]);
+    }    
+    
+
+    // if (data_len == 4) {
+    //     if (data[0] == 'c' && data[1] == 'a' && data[2] == 't') {
+    //         uint8_t dynamicValue = data[3];
+
+    //         Serial.print("Received data: ");
+    //         Serial.println(dynamicValue);
+
+    //         Serial.print(mac_addr[0], HEX);
+    //         Serial.print("-");
+    //         Serial.print(mac_addr[1], HEX);
+    //         Serial.print("-");
+    //         Serial.print(mac_addr[2], HEX);
+    //         Serial.print("-");
+    //         Serial.print(mac_addr[3], HEX);
+    //         Serial.print("-");
+    //         Serial.print(mac_addr[4], HEX);
+    //         Serial.print("-");
+    //         Serial.println(mac_addr[5], HEX);
+            // layer_control.received_layer_switch(dynamicValue);
+        // }
+    // }
 }
 
 

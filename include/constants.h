@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-const char LEFT_CAT = 0x0a;
+const char LEFT_CAT = 0x0c;
 const char RIGHT_CAT = 0x0b;
 
 const char DELIMITER_EVENT = 0x01;

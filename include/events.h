@@ -10,32 +10,47 @@
 #include "layer_control.h"
 
 
+
 // this class is for trinigering the keyboard and mouse events
 class Event {
 
-    public:
+public:
 
-        void actuate(byte event);
-        
-        void deactuate(byte event);
+    void trigger_key(uint8_t device_side,  uint8_t event);
+
+    void move_mouse(int8_t x_value, int8_t y_value);
 
 
-    private:
 
-        String passing_event;
-        char event_component;
 
-        byte pel;
-        byte k;
+private:
 
-        const char cat_function = 0xfa;
-        const char mouse_function = 0xf0;
+    bool trigger_state[2][46];
 
-        void keyboard_press(String passingEvent);
-        void keyboard_release(String passingEvent);
 
-        void mouse_press(char m);
-        void mouse_release(char m);    
+
+
+    String passing_event;
+    char event_component;
+
+    void actuate(String event);
+    void deactuate(String event);
+
+
+
+
+
+    byte pel;
+    byte k;
+
+    const char cat_function = 0xfa;
+    const char mouse_function = 0xf0;
+
+    void keyboard_press(String passingEvent);
+    void keyboard_release(String passingEvent);
+
+    void mouse_press(char m);
+    void mouse_release(char m);    
 
 };
 

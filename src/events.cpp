@@ -1,11 +1,39 @@
 #include "events.h"
 
 
+void Event::trigger_key(uint8_t device_side,  uint8_t event)
+{
 
-
-void Event::actuate(byte event){
+    passing_event = layouts_manager.events_bank[device_side][layer_control.active_layer][event];
+    Serial.println(passing_event);
     
-    passing_event = layouts_manager.events_array[layer_control.active_layer][event];
+    if (trigger_state[device_side][event] == false)
+    {
+        actuate(passing_event);
+        trigger_state[device_side][event] = true;
+    }
+    else if (trigger_state[device_side][event] == true)
+    {
+        deactuate(passing_event);
+        trigger_state[device_side][event] = false;
+    }   
+}
+
+
+
+void Event::move_mouse(int8_t x_value, int8_t y_value)
+{
+
+}
+
+
+
+
+
+
+void Event::actuate(String passing_event){
+    
+    // passing_event = layouts_manager.events_array[layer_control.active_layer][event];
    
     if (passing_event[0] == mouse_function){
         mouse_press(passing_event[1]);
@@ -21,9 +49,9 @@ void Event::actuate(byte event){
 
 
 
-void Event::deactuate(byte event){
+void Event::deactuate(String passing_event){
 
-    passing_event = layouts_manager.events_array[layer_control.active_layer][event];
+    // passing_event = layouts_manager.events_array[layer_control.active_layer][event];
     
     if (passing_event[0] == mouse_function){
         mouse_release(passing_event[1]);
