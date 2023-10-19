@@ -21,11 +21,6 @@ void Event::trigger_key(uint8_t device_side,  uint8_t event)
 
 
 
-void Event::move_mouse(int8_t x_value, int8_t y_value)
-{
-
-}
-
 
 
 
@@ -234,6 +229,38 @@ void Event::mouse_release(char m){
             // do nothing
             break;
     }
+}
+
+
+
+
+
+void Event::move_mouse(int8_t x_value, int8_t y_value)
+{
+    x_movement = convert(x_value);
+    y_movement = convert(y_value);
+
+    Serial.print(x_movement);
+    Serial.print(" ");
+    Serial.println(y_movement);
+
+    Mouse.move(x_movement, y_movement);
+}
+
+
+
+int  Event::convert(byte twoscomp){
+    int value;
+
+    twoscomp = twoscomp << 1;
+
+    if (bitRead(twoscomp,7)){
+        value = -128 + (twoscomp & B01111111 );
+    }
+    else{
+        value = twoscomp;
+    }
+    return value;
 }
 
 

@@ -38,8 +38,6 @@ private:
 
 
 
-
-
     byte pel;
     byte k;
 
@@ -51,6 +49,10 @@ private:
 
     void mouse_press(char m);
     void mouse_release(char m);    
+
+    int convert(byte twoscomp);
+    int x_movement;
+    int y_movement;
 
 };
 

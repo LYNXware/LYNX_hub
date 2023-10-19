@@ -55,8 +55,8 @@ void CatNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int da
 
     Serial.println("OnDataReceived");
 
-    Serial.println(data[0]);
-    Serial.println(data[1]);
+    // Serial.println(data[0]);
+    // Serial.println(data[1]);
 
     if (data[0] == 'L')
     {
@@ -68,7 +68,12 @@ void CatNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int da
     }
     else if (data[0] == 'M')
     {
+        // event.move_mouse(data[1], data[2]);
+        Serial.print(data[1]);
+        Serial.print(" ");
+        Serial.println(data[2]);
         event.move_mouse(data[1], data[2]);
+
     }    
     
 
