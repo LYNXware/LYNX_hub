@@ -21,8 +21,6 @@ public:
     void move_mouse(int8_t x_value, int8_t y_value);
 
 
-
-
 private:
 
     bool trigger_state[2][46];
@@ -50,6 +48,7 @@ private:
     void mouse_press(char m);
     void mouse_release(char m);    
 
+    // convert unsigned byte to signed int
     int convert(byte twoscomp);
     int x_movement;
     int y_movement;

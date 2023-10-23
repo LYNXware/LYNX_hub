@@ -1,3 +1,10 @@
+/*
+Version: 0.3.0
+Date: 01.09.2023
+Developer: Stanislaw Kirpicnikow (Ape Devil)
+Remark: 
+*/
+
 #include <Arduino.h>
 
 #include "wireless_comms.h"
@@ -17,7 +24,7 @@ void setup() {
     //test buton
   pinMode(pI, INPUT_PULLUP);
 
-  catnow.initialize();
+  hub_esp_now.initialize();
   // catnow.scan_for_cats();
 
   Serial.begin(115200);
@@ -38,8 +45,8 @@ void loop() {
   bRead = digitalRead(pI);
   if (bRead == 0) {
 
-    catnow.scan_for_cats();
-    Serial.println(catnow.cats_set);
+    hub_esp_now.scan_for_cats();
+    Serial.println(hub_esp_now.cats_set);
 
     Serial.println(layouts_manager.layouts_package);
     Serial.println(layouts_manager.events_bank[0][0][0]);
@@ -72,9 +79,6 @@ void loop() {
     // Serial.println(catnow.available_cats[0]);
     // Serial.println(sizeof(catnow.available_cats));
   }
-
-  
-
 
 
 }

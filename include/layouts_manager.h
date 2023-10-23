@@ -28,6 +28,8 @@ class Layouts_Manager {
 
         void split_layouts_package(String events_package);
 
+        void save_layouts();
+
 
 
 

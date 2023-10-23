@@ -5,19 +5,8 @@
 
 
 void Layouts_Manager::split_layouts_package(String events_package){
-    
-    // left_cat_layout = place_holder;
-
-    // int sourceArray[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    // int destinationArray[3][3];
-
-    // memcpy(left_cat_layout, place_holder, sizeof(place_holder));
 
     layouts_package = events_package;
-
-
-    // bool left_cat = false;
-    // bool right_cat = false;
 
     int package_length = events_package.length();
 
@@ -25,23 +14,17 @@ void Layouts_Manager::split_layouts_package(String events_package){
     for (int i = 0; i < package_length; i++) {
 
         if (events_package.charAt(i) == LEFT_CAT){
-            // left_cat = true;
-            // right_cat = false;
             device_side = 0;
             layer = 0;
             event_index = 0;
             front_of_events = i+1;
         }
         if (events_package.charAt(i) == RIGHT_CAT){
-            // left_cat = false;
-            // right_cat = true;
             device_side = 1;
             layer = 0;
             event_index = 0;
             front_of_events = i+1;
         }
-
-    
         if (events_package[i] == DELIMITER_LAYOUT){
             layer++;
             event_index = 0;
@@ -54,30 +37,15 @@ void Layouts_Manager::split_layouts_package(String events_package){
 
             front_of_events = i+1;
             event_index++;  
-            // if (left_cat){
-            //     left_cat_layout[layer][event_index] = events_package.substring(front_of_events,i);
-            // }
 
-            // if (right_cat){
-            //     right_cat_layout[layer][event_index] = events_package.substring(front_of_events,i);
-            // }
-
-            // events_array[layer][event_index] = events_package.substring(f,b);
-  
         }   
     }
-        // if (layouts_package.charAt(i) == LEFT_CAT){
-        //     device_layouts[device_index] = incoming_layouts.substring(start,i);
-        //     start = i+1;
-        //     device_index++;
-            
-        // }
 }
 
 
 
-
-
+void Layouts_Manager::save_layouts(){
+}
 
 
 

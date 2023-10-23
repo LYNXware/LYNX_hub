@@ -2,8 +2,8 @@
 #define LAYER_CONTROL_H
 
 #include <Arduino.h>
-// #include "neopixel-LED.h"
-// #include "cat-now.h"
+
+#include "wireless_comms.h"
 
 
 class Layer_Control {
@@ -23,8 +23,8 @@ class Layer_Control {
         // if the key is pressed longer than min_hold_time
         void switch_layer_back(char c);
 
-
-        void received_layer_switch(u8_t layer);
+        // void send_layer_switch(u8_t layer);
+        // void received_layer_switch(u8_t layer);
 
 
     private:

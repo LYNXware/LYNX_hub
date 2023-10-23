@@ -11,60 +11,53 @@
 
 
 
-class CatNow {
+class HubEspNow {
 
-    public:
+public:
 
-        // turn on wifi and CatNow
-        void initialize();
+    // turn on wifi and CatNow
+    void initialize();
 
-        //search for available cats
-        void scan_for_cats();
+    //search for available cats
+    void scan_for_cats();
 
-        byte available_cats_count = 0;
-        String available_cats[MAX_DEVICES];
-        String cats_set = "LYNXhub";
+    byte available_cats_count = 0;
+    String available_cats[MAX_DEVICES];
+    String cats_set = "LYNXhub";
 
-        // const int StringLength = 10;
-        // String* available_cats  = new String[StringLength];
-        // String* cats_variants;
-
-        
-        void event_triger(String event);
+    void send_switch_layer(uint8_t layer);
 
 
 
+    // const int StringLength = 10;
+    // String* available_cats  = new String[StringLength];
+    // String* cats_variants;
+    
+    // void event_triger(String event);
 
+    // void scan_for_slave();
 
+    
+private:
 
-        void scan_for_slave();
+    // wife credentials
+    #define CHANNEL 1
+    String wifi_hub = "LYNXhub_"; 
+    String wifi_cat = "LYNX_";
+    String HUB_DEVICE_DELIMITER = ":";
 
-        void send_switch_layer(uint8_t layer);
+    // slave mac address
+    esp_now_peer_info_t peerInfo;
+    // peer is available
+    bool peer_available = false;
 
-
-
-
-
-    private:
-
-        // wife credentials
-        #define CHANNEL 1
-        String wifi_hub = "LYNXhub_"; 
-        String wifi_cat = "LYNX_";
-        String HUB_DEVICE_DELIMITER = ":";
-
-        // slave mac address
-        esp_now_peer_info_t peerInfo;
-        // peer is available
-        bool peer_available = false;
-
-        // esp-now callbacks
-        static void OnDataSent(const uint8_t* mac_addr, esp_now_send_status_t status);
-        static void OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int data_len); 
+    // esp-now callbacks
+    static void OnDataSent(const uint8_t* mac_addr, esp_now_send_status_t status);
+    static void OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int data_len); 
 
 };
 
 //instance of the class 
-extern CatNow catnow;
+extern HubEspNow hub_esp_now;
 
 #endif

@@ -6,8 +6,15 @@ Layer_Control layer_control;
 void Layer_Control::initialize(){
     // set the layer to 0 on startup
     active_layer = 0;
+    hub_esp_now.send_switch_layer(active_layer);
     // neopixelled.layer_witch(active_layer);
 }
+
+
+// void Layer_Control::send_layer_switch(u8_t layer){
+
+// }
+
 
 
 void Layer_Control::switch_layer(char c){
@@ -59,8 +66,8 @@ void Layer_Control::switch_layer_back(char c){
 }
 
 
-// function to switch layer from the outside through the cat-now module (second device)
-void Layer_Control::received_layer_switch(u8_t layer){
-    active_layer = layer;
-    // neopixelled.layer_witch(active_layer);
-}
+// // function to switch layer from the outside through the cat-now module (second device)
+// void Layer_Control::received_layer_switch(u8_t layer){
+//     active_layer = layer;
+//     // neopixelled.layer_witch(active_layer);
+// }

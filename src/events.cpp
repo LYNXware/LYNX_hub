@@ -4,7 +4,7 @@
 void Event::trigger_key(uint8_t device_side,  uint8_t event)
 {
 
-    passing_event = layouts_manager.events_bank[device_side][layer_control.active_layer][event];
+    passing_event = layouts_manager.events_bank [device_side] [layer_control.active_layer] [event];
     Serial.println(passing_event);
     
     if (trigger_state[device_side][event] == false)
@@ -18,11 +18,6 @@ void Event::trigger_key(uint8_t device_side,  uint8_t event)
         trigger_state[device_side][event] = false;
     }   
 }
-
-
-
-
-
 
 
 
