@@ -12,7 +12,9 @@ void USB_Comms::get_layouts() {
         }
         else{
 
-            layouts_manager.split_layouts_package(incoming_raw_layouts);
+            layouts_manager.split_events_package(incoming_raw_layouts);
+            layouts_manager.save_events_package(incoming_raw_layouts);
+            transmision = "transmision complete";
 
         }
     }

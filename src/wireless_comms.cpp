@@ -53,13 +53,14 @@ void HubEspNow::scan_for_cats(){
 
 void HubEspNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int data_len) {
 
-    Serial.println("OnDataReceived");
+    // Serial.println("OnDataReceived");
     // Serial.println(data[0]);
     // Serial.println(data[1]);
 
     if (data[0] == 'L')
     {
         event.trigger_key(0, data[1]);
+        Serial.println(data[1]);
     }
     else if (data[0] == 'R')
     {
@@ -74,6 +75,10 @@ void HubEspNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int
         event.move_mouse(data[1], data[2]);
 
     }    
+    else if (data[0]=='B'){
+        Serial.print("battery: ");
+        Serial.println(data[1]);
+    }
     
 
     // if (data_len == 4) {

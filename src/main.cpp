@@ -24,6 +24,10 @@ void setup() {
     //test buton
   pinMode(pI, INPUT_PULLUP);
 
+
+  layouts_manager.load_events_package();
+
+
   hub_esp_now.initialize();
   // catnow.scan_for_cats();
 
@@ -46,7 +50,10 @@ void loop() {
   if (bRead == 0) {
 
     hub_esp_now.scan_for_cats();
+
     Serial.println(hub_esp_now.cats_set);
+
+    Serial.println(usb_comms.transmision);
 
     Serial.println(layouts_manager.layouts_package);
     Serial.println(layouts_manager.events_bank[0][0][0]);
