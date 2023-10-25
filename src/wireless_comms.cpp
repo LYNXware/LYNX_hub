@@ -76,8 +76,10 @@ void HubEspNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int
 
     }    
     else if (data[0]=='B'){
-        Serial.print("battery: ");
-        Serial.println(data[1]);
+        // set_battery_level(data[1]);
+        // battery_level = data[1];
+        // Serial.print("battery: ");
+        // Serial.println(data[1]);
     }
     
 
@@ -105,7 +107,11 @@ void HubEspNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int
 }
 
 
-
+// void HubEspNow::set_battery_level(uint8_t battery_value){
+//     battery_level = battery_value;
+//     Serial.print("battery: ");
+//     Serial.println(battery_value);
+// }
 
 
 // void HubEspNow::scan_for_slave(){

@@ -14,7 +14,7 @@ public:
 
     void get_layouts();
 
-    String transmision = "no transmision";
+    // String transmision = "no transmision";
 
 
 private:

@@ -10,6 +10,8 @@ void Layouts_Manager::split_events_package(String events_package){
 
     int package_length = events_package.length();
 
+    // Serial.print("split: ");
+    // Serial.println(events_package);
 
     for (int i = 0; i < package_length; i++) {
 

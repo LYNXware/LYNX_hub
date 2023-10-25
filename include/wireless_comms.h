@@ -27,6 +27,9 @@ public:
 
     void send_switch_layer(uint8_t layer);
 
+    // static void set_battery_level(uint8_t battery_value);
+    static uint8_t battery_level;
+    
 
 
     // const int StringLength = 10;

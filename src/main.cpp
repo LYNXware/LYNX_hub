@@ -53,38 +53,12 @@ void loop() {
 
     Serial.println(hub_esp_now.cats_set);
 
-    Serial.println(usb_comms.transmision);
+    // Serial.println(usb_comms.transmision);
 
     Serial.println(layouts_manager.layouts_package);
     Serial.println(layouts_manager.events_bank[0][0][0]);
     Serial.println(layouts_manager.events_bank[1][0][0]);
 
-
-    // Serial.println(layouts_manager.layouts_package);
-    // Serial.println(layouts_manager.layouts_package[0]);
-    // Serial.println(layouts_manager.layouts_package[1]);
-    // Serial.println(layouts_manager.layouts_package[2]);
-    // Serial.println(layouts_manager.layouts_package[3]);
-
-    // Serial.println(layouts_manager.left_cat_layout[0][0]);
-    // Serial.println(layouts_manager.left_cat_layout[0][1]);
-    // Serial.println(layouts_manager.left_cat_layout[1][0]);
-    // Serial.println(layouts_manager.left_cat_layout[1][1]);
-
-    // Serial.println(layouts_manager.right_cat_layout[0][0]);
-    // Serial.println(layouts_manager.right_cat_layout[0][1]);
-    // Serial.println(layouts_manager.right_cat_layout[1][0]);
-    // Serial.println(layouts_manager.right_cat_layout[1][1]);
-    // 
-    
-    // Serial.println("Hello World");
-    // delay(1000);
-
-    // catnow.test();
-    // catnow.scan_for_cats();
-    // // catnow.send_switch_layer(66);
-    // Serial.println(catnow.available_cats[0]);
-    // Serial.println(sizeof(catnow.available_cats));
   }
 
 
