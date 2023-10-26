@@ -16,7 +16,8 @@ class Event {
 
 public:
 
-    void trigger_key(uint8_t device_side,  uint8_t event);
+    void trigger_key(uint8_t device_side,  uint8_t event_index, uint8_t event_state);
+    // void trigger_key(uint8_t device_side,  uint8_t event);
 
     void move_mouse(int8_t x_value, int8_t y_value);
 

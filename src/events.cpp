@@ -1,23 +1,40 @@
 #include "events.h"
 
-
-void Event::trigger_key(uint8_t device_side,  uint8_t event)
+void Event::trigger_key(uint8_t device_side,  uint8_t event, uint8_t event_state)
 {
 
     passing_event = layouts_manager.events_bank [device_side] [layer_control.active_layer] [event];
     Serial.println(passing_event);
     
-    if (trigger_state[device_side][event] == false)
+    if (event_state == true)
     {
         actuate(passing_event);
-        trigger_state[device_side][event] = true;
+        // trigger_state[device_side][event] = true;
     }
-    else if (trigger_state[device_side][event] == true)
+    else if (event_state == false)
     {
         deactuate(passing_event);
-        trigger_state[device_side][event] = false;
+        // trigger_state[device_side][event] = false;
     }   
 }
+
+// void Event::trigger_key(uint8_t device_side,  uint8_t event)
+// {
+
+//     passing_event = layouts_manager.events_bank [device_side] [layer_control.active_layer] [event];
+//     Serial.println(passing_event);
+    
+//     if (trigger_state[device_side][event] == false)
+//     {
+//         actuate(passing_event);
+//         trigger_state[device_side][event] = true;
+//     }
+//     else if (trigger_state[device_side][event] == true)
+//     {
+//         deactuate(passing_event);
+//         trigger_state[device_side][event] = false;
+//     }   
+// }
 
 
 

@@ -59,20 +59,22 @@ void HubEspNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int
 
     if (data[0] == 'L')
     {
-        event.trigger_key(0, data[1]);
+        event.trigger_key(0, data[1], data[2]);
         Serial.println(data[1]);
     }
     else if (data[0] == 'R')
     {
-        event.trigger_key(1, data[1]);
+        event.trigger_key(1, data[1], data[2]);
     }
     else if (data[0] == 'M')
     {
-        // event.move_mouse(data[1], data[2]);
+        event.move_mouse(data[1], data[2]);
         Serial.print(data[1]);
         Serial.print(" ");
         Serial.println(data[2]);
-        event.move_mouse(data[1], data[2]);
+        // Serial.print(map(data[1], 0, 255, 0, 4095));
+        // Serial.print(" ");
+        // Serial.println(map(data[2], 0, 255, 0, 4095));
 
     }    
     else if (data[0]=='B'){
@@ -83,27 +85,7 @@ void HubEspNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int
     }
     
 
-    // if (data_len == 4) {
-    //     if (data[0] == 'c' && data[1] == 'a' && data[2] == 't') {
-    //         uint8_t dynamicValue = data[3];
 
-    //         Serial.print("Received data: ");
-    //         Serial.println(dynamicValue);
-
-    //         Serial.print(mac_addr[0], HEX);
-    //         Serial.print("-");
-    //         Serial.print(mac_addr[1], HEX);
-    //         Serial.print("-");
-    //         Serial.print(mac_addr[2], HEX);
-    //         Serial.print("-");
-    //         Serial.print(mac_addr[3], HEX);
-    //         Serial.print("-");
-    //         Serial.print(mac_addr[4], HEX);
-    //         Serial.print("-");
-    //         Serial.println(mac_addr[5], HEX);
-            // layer_control.received_layer_switch(dynamicValue);
-        // }
-    // }
 }
 
 
@@ -112,6 +94,40 @@ void HubEspNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int
 //     Serial.print("battery: ");
 //     Serial.println(battery_value);
 // }
+
+
+
+
+// Callback function for sending data
+void HubEspNow::OnDataSent(const uint8_t* mac_addr, esp_now_send_status_t status) {
+  Serial.println("OnDataSent");
+  // Handle send status
+}
+
+
+
+
+
+
+void HubEspNow::send_switch_layer(uint8_t layer) {
+
+    Serial.println("send_switch_layer");
+
+    // Check if the peer exists
+    if (peer_available == false) {
+        Serial.println("No peer available");
+        // scan_for_slave();
+    }
+
+    uint8_t data[] = {'c', 'a', 't', layer};
+
+    // Send the data using ESP-NOW
+    esp_now_send(peerInfo.peer_addr, data, sizeof(data));
+}
+
+
+
+
 
 
 // void HubEspNow::scan_for_slave(){
@@ -169,29 +185,26 @@ void HubEspNow::OnDataReceived(const uint8_t* mac_addr, const uint8_t* data, int
 
 
 
-// Callback function for sending data
-void HubEspNow::OnDataSent(const uint8_t* mac_addr, esp_now_send_status_t status) {
-  Serial.println("OnDataSent");
-  // Handle send status
-}
 
 
+    // if (data_len == 4) {
+    //     if (data[0] == 'c' && data[1] == 'a' && data[2] == 't') {
+    //         uint8_t dynamicValue = data[3];
 
+    //         Serial.print("Received data: ");
+    //         Serial.println(dynamicValue);
 
-
-
-void HubEspNow::send_switch_layer(uint8_t layer) {
-
-    Serial.println("send_switch_layer");
-
-    // Check if the peer exists
-    if (peer_available == false) {
-        Serial.println("No peer available");
-        // scan_for_slave();
-    }
-
-    uint8_t data[] = {'c', 'a', 't', layer};
-
-    // Send the data using ESP-NOW
-    esp_now_send(peerInfo.peer_addr, data, sizeof(data));
-}
+    //         Serial.print(mac_addr[0], HEX);
+    //         Serial.print("-");
+    //         Serial.print(mac_addr[1], HEX);
+    //         Serial.print("-");
+    //         Serial.print(mac_addr[2], HEX);
+    //         Serial.print("-");
+    //         Serial.print(mac_addr[3], HEX);
+    //         Serial.print("-");
+    //         Serial.print(mac_addr[4], HEX);
+    //         Serial.print("-");
+    //         Serial.println(mac_addr[5], HEX);
+            // layer_control.received_layer_switch(dynamicValue);
+        // }
+    // }
