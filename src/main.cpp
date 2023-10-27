@@ -11,6 +11,9 @@ Remark:
 #include "usb_comms.h"
 #include "layouts_manager.h"
 
+#include "buttons.h"
+#include "neopixel.h"
+
 
 //test button
 #define pI 46
@@ -24,6 +27,8 @@ void setup() {
     //test buton
   pinMode(pI, INPUT_PULLUP);
 
+  buttons.initialize();
+  neopixelled.initialize();
 
   layouts_manager.load_events_package();
 
@@ -42,6 +47,8 @@ void setup() {
 
 
 void loop() {
+
+  buttons.read();
 
   usb_comms.get_layouts();
 
