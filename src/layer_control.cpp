@@ -48,9 +48,8 @@ void Layer_Control::switch_layer(char c){
     else{
     // do nothing
     }
-    // catnow.send_switch_layer(active_layer);
-    // neopixelled.layer_witch(active_layer);
-    // delay(10);
+    hub_esp_now.send_switch_layer(active_layer);
+
 }
 
 

@@ -1,6 +1,6 @@
 /*
 Version: 0.3.0
-Date: 01.09.2023
+Date: 01.11.2023
 Developer: Stanislaw Kirpicnikow (Ape Devil)
 Remark: 
 */
@@ -28,7 +28,7 @@ void setup() {
   pinMode(pI, INPUT_PULLUP);
 
   buttons.initialize();
-  neopixelled.initialize();
+  // neopixelled.initialize();
 
   layouts_manager.load_events_package();
 
@@ -62,9 +62,7 @@ void loop() {
 
     // Serial.println(usb_comms.transmision);
 
-    Serial.println(layouts_manager.layouts_package);
-    Serial.println(layouts_manager.events_bank[0][0][0]);
-    Serial.println(layouts_manager.events_bank[1][0][0]);
+    // Serial.println(layouts_manager.layouts_package);0
 
   }
 

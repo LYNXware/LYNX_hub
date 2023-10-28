@@ -18,23 +18,7 @@ void Event::trigger_key(uint8_t device_side,  uint8_t event, uint8_t event_state
     }   
 }
 
-// void Event::trigger_key(uint8_t device_side,  uint8_t event)
-// {
 
-//     passing_event = layouts_manager.events_bank [device_side] [layer_control.active_layer] [event];
-//     Serial.println(passing_event);
-    
-//     if (trigger_state[device_side][event] == false)
-//     {
-//         actuate(passing_event);
-//         trigger_state[device_side][event] = true;
-//     }
-//     else if (trigger_state[device_side][event] == true)
-//     {
-//         deactuate(passing_event);
-//         trigger_state[device_side][event] = false;
-//     }   
-// }
 
 
 
@@ -282,3 +266,20 @@ USBHIDKeyboard Keyboard;
 USBHIDMouse Mouse;
 
 
+// void Event::trigger_key(uint8_t device_side,  uint8_t event)
+// {
+
+//     passing_event = layouts_manager.events_bank [device_side] [layer_control.active_layer] [event];
+//     Serial.println(passing_event);
+    
+//     if (trigger_state[device_side][event] == false)
+//     {
+//         actuate(passing_event);
+//         trigger_state[device_side][event] = true;
+//     }
+//     else if (trigger_state[device_side][event] == true)
+//     {
+//         deactuate(passing_event);
+//         trigger_state[device_side][event] = false;
+//     }   
+// }

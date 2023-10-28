@@ -21,7 +21,7 @@ public:
     //search for available cats
     void scan_for_cats();
 
-    byte available_cats_count = 0;
+    // byte available_cats_count = 0;
     String available_cats[MAX_DEVICES];
     String cats_set = "LYNXhub";
 
@@ -48,6 +48,16 @@ private:
     String wifi_hub = "LYNXhub_"; 
     String wifi_cat = "LYNX_";
     String HUB_DEVICE_DELIMITER = ":";
+
+
+    uint8_t availibel_cats_index;
+    uint8_t available_cats_count;
+    uint8_t max_cats = 2;
+
+    esp_now_peer_info_t peerList[2];
+
+
+
 
     // slave mac address
     esp_now_peer_info_t peerInfo;
